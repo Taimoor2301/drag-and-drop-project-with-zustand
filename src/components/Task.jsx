@@ -19,14 +19,14 @@ const Task = ({ state }) => {
 
   return (
     <div
-      className="w-1/3 p-5 bg-white shadow-md shadow-indigo-200/50 border border-indigo-500 rounded-xl text-gray-800 flex flex-col gap-5 justify-between min-h-[200px]"
+      className="min-w-[20em] p-5 bg-white shadow-md shadow-indigo-200/50 border border-indigo-500 rounded-xl text-gray-800 flex flex-col gap-5 justify-between min-h-[200px]"
       onDragOver={(e) => e.preventDefault()}
       onDrop={() => {
         moveTask(draggedTask.name, state);
         setDraggedTask(null);
       }}
     >
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center flex-col lg:flex-row">
         <h1 className="text-2xl uppercase font-bold">{state}</h1>
 
         <button
@@ -37,9 +37,10 @@ const Task = ({ state }) => {
         </button>
       </div>
 
-      {task.map((task) => {
+      {task.map((task, i) => {
         return (
           <SingleTask
+            key={i}
             task={task}
             setDraggedTask={setDraggedTask}
             deleteTask={deleteTask}
@@ -61,11 +62,11 @@ const SingleTask = ({ task, setDraggedTask, deleteTask, state }) => {
       draggable
       onDragStart={() => setDraggedTask(task.name, task.status)}
     >
-      <h1 className="text-white font-bold text-center tracking-wide text-xl">
+      <h1 className="text-white font-bold text-center tracking-wide lg:text-xl">
         {task.name}
       </h1>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between flex-col lg:flex-row">
         <span className="text-white/80">Status</span>
         <span className="uppercase text-white/80 flex justify-center items-center gap-2">
           {" "}
