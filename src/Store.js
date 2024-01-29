@@ -4,10 +4,8 @@ const store = (set) => {
 	return {
 		tasks: [
 			{ name: "Task one", status: "pending" },
-			{ name: "Task Two", status: "pending" },
+			{ name: "Task Two", status: "ongoing" },
 			{ name: "Task Three", status: "completed" },
-			{ name: "Task four", status: "completed" },
-			{ name: "Task five", status: "ongoing" },
 		],
 		addTask: (name, status) => set((store) => ({ tasks: [...store.tasks, { name, status }] })),
 		deleteTask: (name, status) => set((store) => ({ tasks: store.tasks.filter((task) => task.name !== name) })),
